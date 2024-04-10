@@ -11,11 +11,11 @@ for i in {1..10}; do
     echo "File $filename created."
 done
 
-for i in {11..20}; do
-    # Generate file name
-    filename="$i.txt"
+# for i in {11..20}; do
+#     # Generate file name
+#     filename="$i.txt"
     
-    touch $filename
+#     touch $filename
     
-    echo "File $filename created."
-done
+#     echo "File $filename created."
+# done

@@ -10,9 +10,9 @@
 
 double factorial(double n) {
     if (n == 0 || n == 1) // base case
-        return 1;
+        return 1.0;
     else
-        return n * factorial(n - 1);
+        return n * factorial(n - 1.0);
 }
 double choose(double n, double r) {
     return factorial(n) / (factorial(r) * factorial(n - r));
@@ -42,18 +42,21 @@ int main(int argc, char *argv[]) {
 
     // 3: Packet Switching Senario
     // compute: 3a, b, c, d, e, f, g, h
-    pPSusers = tPSusers;
-    pPSusersNotBusy = 1 - pPSusers;
-    double pAllNotBusy = pow(pPSusersNotBusy, nPSusers - 1);
-    double pOneBusy = nPSusers * pAllNotBusy;
-    double pExactlyOne = nPSusers * pOneBusy;
-    double pTenBusy = pow(pPSusers, 10) * pow(pPSusersNotBusy, nPSusers - 10);
-    double pAnyTenBusy = choose(nPSusers, 10) * pAnyTenBusy;
-    double pTenMoreBusy = 0;
+    pPSusers = tPSusers;                                     // a
+    pPSusersNotBusy = 1 - pPSusers;                          // b
+    double pAllNotBusy = pow(pPSusersNotBusy, nPSusers - 1); // c
+    double pOneBusy = pPSusers * pAllNotBusy;                // d
+    double pExactlyOne = nPSusers * pOneBusy;                // e
+    double pTenBusy =
+        pow(pPSusers, 10) * pow(pPSusersNotBusy, nPSusers - 10); // f
+    double pAnyTenBusy = choose(nPSusers, 10.0) * pTenBusy;      // g
+    double pTenMoreBusy = 0;                                     // h
     for (int i = 11; i <= nPSusers; i++) {
-        pTenMoreBusy += choose(nPSusers, i);
+        pTenMoreBusy += choose((double)nPSusers, (double)i) * pow(pPSusers, i) *
+                        pow(pPSusersNotBusy, nPSusers - i);
     }
 
+    printf("%lg\n", factorial(10.0));
     printf("3: Packet switching senario");
     printf("3a: The probability that a given (specific) user is busy "
            "transmitting = %f\n",
