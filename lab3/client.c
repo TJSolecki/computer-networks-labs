@@ -58,7 +58,8 @@ int main(int argc, char *argv[]) {
     write(sockfd, src_file, strlen(src_file));
 
     // Client begins to write and read from the server
-    int dst_fd = open(dst_file, O_WRONLY | O_CREAT | O_TRUNC);
+    int dst_fd = open(dst_file, O_WRONLY | O_CREAT | O_TRUNC,
+                      S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
     if (dst_fd < 0) { // open() error checking
         fprintf(stderr, "unable to open/create %s for writing: %i\n", dst_file,
                 errno);
