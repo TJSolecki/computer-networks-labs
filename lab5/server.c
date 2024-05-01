@@ -1,3 +1,9 @@
+// Name: Thomas Solecki
+// Date: 5/1/2024
+// Title: Lab5 – Step 1
+// Description: This program is a server that listens for a client request to
+// upload a file to a a UDP socket using a rdt 2.2 protocol
+
 // COEN 146L: Lab5, UDP server with packets that have checksum, sequence number,
 // acknowledgement number
 #include <arpa/inet.h>
